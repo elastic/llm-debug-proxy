@@ -87,7 +87,7 @@ export function startServer({ cliOptions }: { cliOptions: CliOptions }) {
 
   app.all('*', (req: Request, res: Response) => {
     console.log(`Hitting catch all route: ${req.method} ${req.path}`);
-    res.send('Noting to see here. Try POST /chat/completions');
+    res.send('Nothing to see here. Try POST /chat/completions');
   });
 
   app.listen(PORT, () => {
