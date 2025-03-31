@@ -22,7 +22,7 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^1.7.9",
-    "express": "^4.21.2",
+    "express": "^5.0.0",
     "get-port": "^7.1.0",
     "lodash": "^4.17.21",
     "undici-types": "^6.20.0",
