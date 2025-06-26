@@ -4,7 +4,6 @@ import { omit } from 'lodash';
 import OpenAI from 'openai';
 import { URL } from 'url';
 import { CliOptions } from './cli';
-import { ChatCompletionToolRunnerParams } from 'openai/lib/ChatCompletionRunner';
 
 export function parseTargetUrl(targetUrlParam: string | undefined) {
   if (!targetUrlParam) {
@@ -94,12 +93,12 @@ export function formatRequestBody({
   try {
     const parsed = JSON.parse(
       requestData,
-    ) as ChatCompletionToolRunnerParams<never>;
+    ) as OpenAI.Chat.ChatCompletionCreateParams;
     if (cliOptions.tools === 'none') {
       return JSON.stringify(omit(parsed, 'tools'), null, 2);
     } else if (cliOptions.tools === 'name') {
-      const toolNames = parsed.tools.map(
-        (tool) => tool.name ?? tool?.function?.name,
+      const toolNames = parsed.tools?.map((tool) =>
+        tool.type === 'function' ? tool.function.name : tool.type,
       ); // only show tool names
       const output = { ...parsed, tools: toolNames };
       return JSON.stringify(output, null, 2);
