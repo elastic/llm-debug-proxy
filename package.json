@@ -25,7 +25,7 @@
     "express": "^4.21.2",
     "get-port": "^7.1.0",
     "lodash": "^4.17.21",
-    "undici-types": "^6.20.0",
+    "undici-types": "^7.0.0",
     "yargs": "^17.7.2"
   },
   "scripts": {
